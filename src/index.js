@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import path from 'path'
 import './database'
+import categoriaRoutes from './routes/categoria.routes'
 
 //configuraciones
 const app = express();
@@ -21,6 +22,4 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, '../public')));  
 
 // Rutas
-app.get('/', (request, response)=>{
-    response.send('Response inicial');
-})
+app.use('/api/categoria', categoriaRoutes);
