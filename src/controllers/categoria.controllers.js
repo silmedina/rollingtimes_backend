@@ -2,10 +2,6 @@ import { restart } from 'nodemon';
 import Categoria from '../models/categoria'
 const categoriaCtrl = {};
 
-categoriaCtrl.getCategorias = (req, res)=>{
-    res.send('Categorias');
-}
-
 categoriaCtrl.nuevaCategoria = async (req, res)=>{
     try {
         //validaciones
@@ -25,6 +21,19 @@ categoriaCtrl.nuevaCategoria = async (req, res)=>{
         console.log(error)
     }
 }
+
+categoriaCtrl.listarCategorias = async (req, res)=>{
+    try {
+     const arregloCategorias = await Categoria.find();
+     res.status(200).json(arregloCategorias);
+    } catch (error) {
+        res.status(404).json({
+            mensaje : 'No se pudo obtener las categorias'
+        })  
+        console.log(error);
+    }
+}
+
 
 
 export default categoriaCtrl;
