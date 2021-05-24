@@ -8,4 +8,10 @@ router
   .get(categoriaCtrl.listarCategorias)
   .post(categoriaCtrl.nuevaCategoria);
 
-export default router;
+
+  router
+  .route("/:id")
+  .delete(categoriaCtrl.eliminarCategoria);
+
+
+  export default router;
