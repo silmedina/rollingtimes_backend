@@ -47,4 +47,32 @@ categoriaCtrl.eliminarCategoria = async (req, res) => {
   }
 };
 
+categoriaCtrl.editarCategoria = async (req, res) => {
+  try {
+    await Categoria.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).json({
+      mensaje: "Se edito la categoria correctamente",
+    });
+  } catch (error) {
+    res.status(404).json({
+      mensaje: "Error al editar la categoria",
+    });
+    console.log(error);
+  }
+};
+
+categoriaCtrl.obtenerCategoria = async (req, res) => {
+  try {
+    const categoriaBuscada = await Categoria.findById(req.params.id);
+    res.status(200).json(
+      categoriaBuscada
+    );
+  } catch (error) {
+    res.status(404).json({
+      mensaje: "Error al obtener la categoria",
+    });
+    console.log(error);
+  }
+};
+
 export default categoriaCtrl;
