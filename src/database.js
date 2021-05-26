@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 
-// const connectionString = 'mongodb://localhost:27017/rollingtimesdb';
 const connectionString = 'mongodb+srv://admin:Admin2021@cluster0.b8xmu.mongodb.net/rollingtimesdb';
 
  mongoose.connect(connectionString,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
