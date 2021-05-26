@@ -1,4 +1,3 @@
-import { restart } from "nodemon";
 import Categoria from "../models/categoria";
 const categoriaCtrl = {};
 
