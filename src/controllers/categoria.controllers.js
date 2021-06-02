@@ -13,10 +13,16 @@ categoriaCtrl.nuevaCategoria = async (req, res) => {
       mensaje: "Categoria creada correctamente",
     });
   } catch (error) {
+    if (error && error.code === 11000) {
+      res.status(500).send({
+        mensaje: "Categoria ya existe",
+      });
+      return;
+    }
     res.status(500).json({
       mensaje: "Error al agregar categoria",
     });
-    console.log(error);
+    console.log("error contains", error);
   }
 };
 
@@ -63,9 +69,7 @@ categoriaCtrl.editarCategoria = async (req, res) => {
 categoriaCtrl.obtenerCategoria = async (req, res) => {
   try {
     const categoriaBuscada = await Categoria.findById(req.params.id);
-    res.status(200).json(
-      categoriaBuscada
-    );
+    res.status(200).json(categoriaBuscada);
   } catch (error) {
     res.status(404).json({
       mensaje: "Error al obtener la categoria",
