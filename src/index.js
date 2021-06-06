@@ -5,6 +5,7 @@ import path from 'path'
 import './database'
 import categoriaRoutes from './routes/categoria.routes'
 import suscripcionRoutes from './routes/suscripcion.routes'
+import loginRoutes from './routes/login.routes'
 
 //configuraciones
 const app = express();
@@ -25,3 +26,4 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Rutas
 app.use('/api/categoria', categoriaRoutes);
 app.use('/api/suscripcion', suscripcionRoutes);
+app.use('/api/login', loginRoutes);

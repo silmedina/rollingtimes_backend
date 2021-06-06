@@ -5,7 +5,7 @@ suscripcionCtrl.nuevaSuscripcion = async (req, res) => {
   console.log(req.body);
 
   try {
-    //validar
+    //validar por las dudas si alguna validacion del front paso por alto
 
     const suscripcionNueva = new Suscripcion({
       nombre: req.body.nombre,
@@ -13,6 +13,7 @@ suscripcionCtrl.nuevaSuscripcion = async (req, res) => {
       localidad: req.body.localidad,
       direccion: req.body.direccion,
       email: req.body.email,
+      password: req.body.password,
       telefono: req.body.telefono,
       postal: req.body.postal,
     });
