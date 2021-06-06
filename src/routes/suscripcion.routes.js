@@ -5,7 +5,9 @@ const router = Router();
 
 router
   .route("/")
-  .get(suscripcionCtrl.getPrueba)
+  .get(suscripcionCtrl.listarSuscripcion)
   .post(suscripcionCtrl.nuevaSuscripcion);
+
+router.route('/:id').delete(suscripcionCtrl.eliminarSuscripcion)
 
 export default router;
