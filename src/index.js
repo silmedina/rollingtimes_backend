@@ -5,6 +5,7 @@ import path from 'path'
 import './database'
 import categoriaRoutes from './routes/categoria.routes'
 import noticiaRoutes from './routes/noticia.routes'
+import cotizacionRoutes from './routes/cotizacion.routes'
 
 //configuraciones
 const app = express();
@@ -25,3 +26,4 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Rutas
 app.use('/api/categoria', categoriaRoutes);
 app.use('/api/noticia', noticiaRoutes);
+app.use('/api/cotizacion', cotizacionRoutes);
