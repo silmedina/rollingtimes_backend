@@ -6,6 +6,7 @@ import './database'
 import categoriaRoutes from './routes/categoria.routes'
 import suscripcionRoutes from './routes/suscripcion.routes'
 import loginRoutes from './routes/login.routes'
+import AuthToken from './AuthToken'
 
 //configuraciones
 const app = express();
@@ -21,7 +22,8 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));  
-app.use(express.static(path.join(__dirname, '../public')));  
+app.use(express.static(path.join(__dirname, '../public')));
+//app.use(AuthToken);    
 
 // Rutas
 app.use('/api/categoria', categoriaRoutes);

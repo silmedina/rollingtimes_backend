@@ -14,6 +14,14 @@ const suscripcionSchema = new Schema({
     minlength: 3,
     maxlength: 20,
   },
+  role: {
+    type: String,
+    default: 'regular',
+    enum: [
+      'regular',
+      'admin'
+    ]
+  },
   localidad: {
     type: String,
     required: true,
