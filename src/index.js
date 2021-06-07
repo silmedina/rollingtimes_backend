@@ -4,6 +4,7 @@ import cors from 'cors'
 import path from 'path'
 import './database'
 import categoriaRoutes from './routes/categoria.routes'
+import noticiasRoutes from './routes/noticias.routes'
 
 //configuraciones
 const app = express();
@@ -23,3 +24,4 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // Rutas
 app.use('/api/categoria', categoriaRoutes);
+app.use('/api/noticias', noticiasRoutes);
