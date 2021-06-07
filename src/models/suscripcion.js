@@ -43,14 +43,14 @@ const suscripcionSchema = new Schema({
     type: Number,
     required: true,
     unique: true,
-    minlength: 3,
-    maxlength: 15,
+    minlength: 7,
+    maxlength: 14,
   },
   postal: {
     type: Number,
     required: true,
-    minlength: 3,
-    maxlength: 15,
+    minlength: 4,
+    maxlength: 4,
   },
 });
 

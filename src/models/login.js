@@ -1,11 +1,12 @@
 import mongoose, {Schema} from 'mongoose'
 
 const usuarioSchema = new Schema({
-    nombreUsuario: {
+    email: {
         type: String, 
         required: true,
         unique: true,
-        maxlength: 40
+        minlength: 10,
+        maxlength: 40,
     },
     password: {
         type: String,
