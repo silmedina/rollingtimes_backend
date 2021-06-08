@@ -7,6 +7,8 @@ import categoriaRoutes from './routes/categoria.routes'
 import suscripcionRoutes from './routes/suscripcion.routes'
 import loginRoutes from './routes/login.routes'
 import AuthToken from './AuthToken'
+import noticiaRoutes from './routes/noticia.routes'
+import cotizacionRoutes from './routes/cotizacion.routes'
 
 //configuraciones
 const app = express();
@@ -29,3 +31,5 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/api/categoria', categoriaRoutes);
 app.use('/api/suscripcion', suscripcionRoutes);
 app.use('/api/login', loginRoutes);
+app.use('/api/noticia', noticiaRoutes);
+app.use('/api/cotizacion', cotizacionRoutes);
