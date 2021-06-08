@@ -5,30 +5,30 @@ const noticiaSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        maxlength: 50,
-        minlength: 7
+        // maxlength: 50,
+        // minlength: 7
     },
     bajada:{
         type: String,
         required: true,
         unique: true,
-        maxlength: 250,
-        minlength:10
+        // maxlength: 250,
+        // minlength:10
     },
     
     cuerpo:{
         type: String,
-        required: true,
-        unique: true,
-        maxlength: 600,
-        minlength:90
+        // required: true,
+        // unique: true,
+        // maxlength: 600,
+        // minlength:90
     },
 
     // imagen:{},
     categoria:{
         type: String,
-        required: true,
-        unique: true,
+        // required: true,
+        // unique: true,
     },
     autor:{
         type: String,

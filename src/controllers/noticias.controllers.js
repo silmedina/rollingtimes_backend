@@ -1,4 +1,4 @@
-import Noticias from '../models/noticias'
+import Noticias from "../models/noticias"
 const noticiasCtrl = {};
 
 noticiasCtrl.nuevaNoticia = async (req, res) => {

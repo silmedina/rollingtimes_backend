@@ -24,4 +24,4 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // Rutas
 app.use('/api/categoria', categoriaRoutes);
-app.use('/api/noticias', noticiasRoutes);
+app.use('/api/noticia', noticiasRoutes);
