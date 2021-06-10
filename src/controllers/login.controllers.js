@@ -10,7 +10,6 @@ loginCtrl.nuevaLogin = (req, res) => {
   try {
     let email= req.body.email;
     let password= req.body.password;
-    let role;
 
 
     Suscripcion.findOne({email})
@@ -22,6 +21,7 @@ loginCtrl.nuevaLogin = (req, res) => {
                             const payload = {
                                 email: user.email,
                                 nombre: user.nombre,
+                                token: user.token,
                                 role: user.role
                             }
                             //Acceso
@@ -32,7 +32,7 @@ loginCtrl.nuevaLogin = (req, res) => {
                                     if(payload.role == 'admin'){
                                         res.status(200).send({mensaje: 'Acceso administrador', token})
                                     }else{
-                                        res.status(201).send({mensaje: 'Acceso usuario'})
+                                        res.status(201).send({mensaje: 'Acceso usuario', token})
                                     }
                                 }
                             })
