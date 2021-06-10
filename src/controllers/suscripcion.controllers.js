@@ -43,16 +43,14 @@ suscripcionCtrl.listarSuscripcion = async (req, res) => {
   if(!token){
     return res.status(401).json({
       auth:false,
-      message: 'No token provide'
-    })
-  }else{
-    res.status(200).json({
-      message: 'todo bien'
-    })
+      message: 'No token provided'
+    });
   }
 
+
   const decoded = jwt.verify(token, CONFIG.SECRET_TOKEN);
-  const user = await Suscripcion.findById(decoded.id);
+  
+  const user = await Suscripcion.findById(decoded.id, {password: 0});
   if(!user){
     return res.status(404).send('No user found');
   }
@@ -65,7 +63,7 @@ suscripcionCtrl.listarSuscripcion = async (req, res) => {
   // } catch (error) {
   //   console.log(error);
   //   res.status(404).json({
-  //     mensaje: "No se obtubo lista",
+  //     mensaje: "No se obtuvo lista",
   //   });
   // }
 };

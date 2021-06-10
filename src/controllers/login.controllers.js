@@ -30,15 +30,21 @@ loginCtrl.nuevaLogin = (req, res) => {
                                     res.status(500).send({error});
                                 }else{
                                     if(payload.role == 'admin'){
-                                        res.status(200).send({mensaje: 'Acceso administrador', token})
+                                        const token = jwt.sign({id: user._id}, CONFIG.SECRET_TOKEN, {
+                                            expiresIn: 60 * 60
+                                        });
+                                        res.status(200).send({mensaje: 'Acceso administrador',email,role, token})
                                     }else{
-                                        res.status(201).send({mensaje: 'Acceso usuario', token})
+                                        const token = jwt.sign({id: user._id}, CONFIG.SECRET_TOKEN, {
+                                            expiresIn: 60 * 60
+                                        });
+                                        res.status(201).send({mensaje: 'Acceso usuario',email,role, token})
                                     }
                                 }
                             })
                         }else{
                             //Acceso denegado
-                            res.status(301).send({mensaje: 'Password incorrecta'});
+                            res.status(401).send({mensaje: 'Password incorrecta', token: null});
                         } 
                 }).catch(error =>{
                     console.log(error);
