@@ -8,7 +8,7 @@ import suscripcionRoutes from './routes/suscripcion.routes'
 import loginRoutes from './routes/login.routes'
 import AuthToken from './AuthToken'
 import cotizacionRoutes from './routes/cotizacion.routes'
-import noticiasRoutes from './routes/noticias.routes'
+import noticiaRoutes from './routes/noticia.routes'
 
 //configuraciones
 const app = express();
@@ -32,4 +32,4 @@ app.use('/api/categoria', categoriaRoutes);
 app.use('/api/suscripcion', suscripcionRoutes);
 app.use('/api/login', loginRoutes);
 app.use('/api/cotizacion', cotizacionRoutes);
-app.use('/api/noticias', noticiasRoutes);
+app.use('/api/noticia', noticiaRoutes);

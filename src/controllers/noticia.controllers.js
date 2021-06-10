@@ -28,6 +28,7 @@ noticiaCtrl.nuevaNoticia = async (req, res) => {
       mensaje: "Noticia creada correctamente",
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       mensaje: "Error al agregar noticia",
     });
@@ -64,13 +65,12 @@ noticiaCtrl.editarNoticia = async (req, res) => {
   try {
     const noticiaExistente = await Noticia.find({
         $and: [
-          {_id:  { $ne: req.params.id } },
-          {titulo: req.body.titulo}
+          {_id:  { $ne: req.params.id } }
         ],
       }).collation({locale: "es", strength: 2});
-    if (noticiaExistente.length > 0) {
+    if (noticiaExistente.length === 0) {
       res.status(500).send({
-        mensaje: "Noticia ya existe",
+        mensaje: "Noticia no existe",
       });
       return;
     }
