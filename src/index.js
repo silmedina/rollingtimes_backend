@@ -32,4 +32,4 @@ app.use('/api/categoria', categoriaRoutes);
 app.use('/api/suscripcion', suscripcionRoutes);
 app.use('/api/login', loginRoutes);
 app.use('/api/cotizacion', cotizacionRoutes);
-app.use('/api/noticia', noticiasRoutes);
+app.use('/api/noticias', noticiasRoutes);

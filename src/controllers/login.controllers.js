@@ -6,11 +6,11 @@ import CONFIG from "../config"
 const loginCtrl = {};
 
 loginCtrl.nuevaLogin = (req, res) => {
-  console.log(req.body);
 
   try {
     let email= req.body.email;
     let password= req.body.password;
+    let role;
 
 
     Suscripcion.findOne({email})
@@ -22,7 +22,6 @@ loginCtrl.nuevaLogin = (req, res) => {
                             const payload = {
                                 email: user.email,
                                 nombre: user.nombre,
-                                apellido: user.apellido,
                                 role: user.role
                             }
                             //Acceso
@@ -30,12 +29,16 @@ loginCtrl.nuevaLogin = (req, res) => {
                                 if(error){
                                     res.status(500).send({error});
                                 }else{
-                                    res.status(200).send({mensaje: 'Acceso', token})
+                                    if(payload.role == 'admin'){
+                                        res.status(200).send({mensaje: 'Acceso administrador', token})
+                                    }else{
+                                        res.status(201).send({mensaje: 'Acceso usuario'})
+                                    }
                                 }
                             })
                         }else{
                             //Acceso denegado
-                            res.status(201).send({mensaje: 'Password incorrecta'});
+                            res.status(301).send({mensaje: 'Password incorrecta'});
                         } 
                 }).catch(error =>{
                     console.log(error);
