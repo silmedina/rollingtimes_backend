@@ -14,4 +14,8 @@ router
   .put(noticiaCtrl.editarNoticia)
   .get(noticiaCtrl.obtenerNoticia);
 
+  router
+  .route("/categoria/:nombreCategoria")
+  .get(noticiaCtrl.obtenerNoticiasPorNombreCategoria);
+
 export default router;
