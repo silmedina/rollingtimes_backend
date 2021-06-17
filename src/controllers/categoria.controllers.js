@@ -31,7 +31,11 @@ categoriaCtrl.nuevaCategoria = async (req, res) => {
 categoriaCtrl.listarCategorias = async (req, res) => {
   try {
     const arregloCategorias = await Categoria.find();
-    res.status(200).json(arregloCategorias);
+    setTimeout(() => {
+      res.status(200).json(arregloCategorias);
+    }, 2000);
+
+    // res.status(200).json(arregloCategorias);
   } catch (error) {
     res.status(500).json({
       mensaje: "No se pudo obtener las categorias",
