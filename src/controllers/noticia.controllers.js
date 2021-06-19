@@ -100,7 +100,6 @@ noticiaCtrl.obtenerNoticia = async (req, res) => {
 
 noticiaCtrl.obtenerNoticiasPorNombreCategoria = async (req, res) => {
   try {
-    console.log(req.params.nombreCategoria)
     const arregloNoticias = await Noticia.find({categoria: req.params.nombreCategoria}).collation({locale: "es", strength: 2});
     res.status(200).json(arregloNoticias);
   } catch (error) {
