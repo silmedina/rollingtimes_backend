@@ -38,7 +38,9 @@ noticiaCtrl.nuevaNoticia = async (req, res) => {
 noticiaCtrl.listarNoticias = async (req, res) => {
   try {
     const arregloNoticias = await Noticia.find();
-    res.status(200).json(arregloNoticias);
+    setTimeout(() => {
+      res.status(200).json(arregloNoticias);
+    }, 2000);
   } catch (error) {
     res.status(500).json({
       mensaje: "No se pudo obtener las noticias",
