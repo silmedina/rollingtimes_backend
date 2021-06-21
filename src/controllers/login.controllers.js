@@ -6,12 +6,9 @@ import CONFIG from "../config"
 const loginCtrl = {};
 
 loginCtrl.nuevaLogin = (req, res) => {
-
   try {
     let email= req.body.email;
     let password= req.body.password;
-
-
     Suscripcion.findOne({email})
         .then(user => {
             if(!user) return res.status(404).send({mensaje: 'El usuario no existe'});
@@ -24,7 +21,6 @@ loginCtrl.nuevaLogin = (req, res) => {
                                 token: user.token,
                                 role: user.role
                             }
-                            //Acceso
                             jwt.sign(payload,CONFIG.SECRET_TOKEN,function(error,token){
                                 if(error){
                                     res.status(500).send({error});
@@ -33,17 +29,16 @@ loginCtrl.nuevaLogin = (req, res) => {
                                         const token = jwt.sign({id: user._id}, CONFIG.SECRET_TOKEN, {
                                             expiresIn: 60 * 60
                                         });
-                                        res.status(200).send({mensaje: 'Acceso administrador',email,role, token})
+                                        res.status(200).send({mensaje: 'Acceso administrador',email, token})
                                     }else{
                                         const token = jwt.sign({id: user._id}, CONFIG.SECRET_TOKEN, {
                                             expiresIn: 60 * 60
                                         });
-                                        res.status(201).send({mensaje: 'Acceso usuario',email,role, token})
+                                        res.status(201).send({mensaje: 'Acceso usuario',email, token})
                                     }
                                 }
                             })
                         }else{
-                            //Acceso denegado
                             res.status(401).send({mensaje: 'Password incorrecta', token: null});
                         } 
                 }).catch(error =>{
@@ -56,7 +51,6 @@ loginCtrl.nuevaLogin = (req, res) => {
         });
 
   } catch (error) {
-    console.log(error);
     res.status(404).json({
       mensaje: "No se pudo obtener el arreglo de login",
     });
