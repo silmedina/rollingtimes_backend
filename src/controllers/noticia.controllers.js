@@ -11,6 +11,8 @@ noticiaCtrl.nuevaNoticia = async (req, res) => {
       autor: req.body.autor,
       fecha: req.body.fecha,
       imagen: req.body.imagen,
+      destacar: req.body.destacar,
+      publicar: req.body.publicar,
     });
 
     nuevaNoticia.fecha = new Date();

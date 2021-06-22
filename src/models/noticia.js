@@ -10,10 +10,12 @@ const noticiaSchema = new Schema({
   },
   subtitulo: { type: String },
   categoria: { type: String },
-  texto: { type: String, required: true },
-  autor: { type: String, required: true },
+  texto: { type: String },
+  autor: { type: String },
   fecha: { type: String },
   imagen: { type: String },
+  destacar: {type: Boolean},
+  publicar: {type: Boolean}
 });
 
 const Noticia = mongoose.model("noticia", noticiaSchema);
