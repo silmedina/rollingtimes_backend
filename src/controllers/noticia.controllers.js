@@ -112,4 +112,22 @@ noticiaCtrl.obtenerNoticiasPorNombreCategoria = async (req, res) => {
   }
 };
 
+noticiaCtrl.buscarNoticiasPorTituloSubtitulo = async (req, res) => {
+  try {
+    console.log(req.params.terminoBusqueda)
+    const arregloNoticias = await Noticia.find({
+      $or: [
+        {'titulo': {'$regex': req.params.terminoBusqueda, '$options': 'i'}},
+        {'subtitulo': {'$regex': req.params.terminoBusqueda, '$options': 'i'}},
+      ],
+    }).collation({locale: "es", strength: 2});
+    res.status(200).json(arregloNoticias);
+  } catch (error) {
+    res.status(500).json({
+      mensaje: "No se pudo obtener las noticias",
+    });
+    console.log(error);
+  }
+};
+
 export default noticiaCtrl;

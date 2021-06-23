@@ -18,4 +18,8 @@ router
   .route("/categoria/:nombreCategoria")
   .get(noticiaCtrl.obtenerNoticiasPorNombreCategoria);
 
+  router
+  .route("/buscar/:terminoBusqueda")
+  .get(noticiaCtrl.buscarNoticiasPorTituloSubtitulo);
+
 export default router;
