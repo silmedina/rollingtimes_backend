@@ -64,6 +64,7 @@ noticiaCtrl.eliminarNoticia = async (req, res) => {
 };
 
 noticiaCtrl.editarNoticia = async (req, res) => {
+  console.log(req.body);
   try {
     const noticiaExistente = await Noticia.find({
         $and: [
