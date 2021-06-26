@@ -1,4 +1,5 @@
 import Categoria from "../models/categoria";
+import Noticia from "../models/noticia";
 const categoriaCtrl = {};
 
 categoriaCtrl.nuevaCategoria = async (req, res) => {
@@ -31,7 +32,11 @@ categoriaCtrl.nuevaCategoria = async (req, res) => {
 categoriaCtrl.listarCategorias = async (req, res) => {
   try {
     const arregloCategorias = await Categoria.find();
-    res.status(200).json(arregloCategorias);
+    setTimeout(() => {
+      res.status(200).json(arregloCategorias);
+    }, 2000);
+
+    // res.status(200).json(arregloCategorias);
   } catch (error) {
     res.status(500).json({
       mensaje: "No se pudo obtener las categorias",
@@ -42,6 +47,13 @@ categoriaCtrl.listarCategorias = async (req, res) => {
 
 categoriaCtrl.eliminarCategoria = async (req, res) => {
   try {
+    const categoria = await Categoria.findById(req.params.id);
+    const arregloNoticias = await Noticia.find({categoria: categoria.nombre}).collation({locale: "es", strength: 2});
+    if (arregloNoticias.length > 0) {
+      return res.status(500).json({
+        mensaje: "Debe eliminar primero las noticias de esta categoria",
+      });
+    }
     await Categoria.findByIdAndDelete(req.params.id);
     res.status(200).json({
       mensaje: "Se elimnino la categoria correctamente",
