@@ -26,15 +26,15 @@ loginCtrl.nuevaLogin = (req, res) => {
                                     res.status(500).send({error});
                                 }else{
                                     if(payload.role == 'admin'){
-                                        const token = jwt.sign({id: user._id}, CONFIG.SECRET_TOKEN, {
+                                        const token = jwt.sign({id: user._id, email:user.email, role:user.role}, CONFIG.SECRET_TOKEN, {
                                             expiresIn: 60 * 60
                                         });
-                                        res.status(200).send({mensaje: 'Acceso administrador',email, token})
+                                        res.status(200).send(token)
                                     }else{
-                                        const token = jwt.sign({id: user._id}, CONFIG.SECRET_TOKEN, {
+                                        const token = jwt.sign({id: user._id, email:user.email, role:user.role}, CONFIG.SECRET_TOKEN, {
                                             expiresIn: 60 * 60
                                         });
-                                        res.status(201).send({mensaje: 'Acceso usuario',email, token})
+                                        res.status(201).send(token)
                                     }
                                 }
                             })
