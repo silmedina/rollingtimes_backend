@@ -93,7 +93,9 @@ noticiaCtrl.editarNoticia = async (req, res) => {
 noticiaCtrl.obtenerNoticia = async (req, res) => {
   try {
     const noticiaBuscada = await Noticia.findById(req.params.id);
-    res.status(200).json(noticiaBuscada);
+    setTimeout(() => {
+      res.status(200).json(noticiaBuscada);
+    }, 2000);
   } catch (error) {
     res.status(500).json({
       mensaje: "Error al obtener la noticia",
