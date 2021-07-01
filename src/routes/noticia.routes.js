@@ -15,6 +15,10 @@ router
   .get(noticiaCtrl.obtenerNoticia);
 
   router
+    .route("/destacar/:id")
+    .put(noticiaCtrl.destacarNoticia);
+
+  router
   .route("/categoria/:nombreCategoria")
   .get(noticiaCtrl.obtenerNoticiasPorNombreCategoria);
 

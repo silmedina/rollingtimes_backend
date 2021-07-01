@@ -12,7 +12,6 @@ noticiaCtrl.nuevaNoticia = async (req, res) => {
       fecha: req.body.fecha,
       imagen: req.body.imagen,
       destacar: req.body.destacar,
-      publicar: req.body.publicar,
     });
 
     nuevaNoticia.fecha = new Date();
@@ -81,6 +80,19 @@ noticiaCtrl.editarNoticia = async (req, res) => {
     await Noticia.findByIdAndUpdate(req.params.id, req.body);
     res.status(200).json({
       mensaje: "Se edito la noticia correctamente",
+    });
+  } catch (error) {
+    res.status(500).json({
+      mensaje: "Error al editar la noticia",
+    });
+    console.log(error);
+  }
+};
+noticiaCtrl.destacarNoticia = async (req, res) => {
+  try {
+    await Noticia.findByIdAndUpdate(req.params.id, {destacar: req.body.destacar});
+    res.status(200).json({
+      mensaje: "Se destaco la noticia correctamente",
     });
   } catch (error) {
     res.status(500).json({
