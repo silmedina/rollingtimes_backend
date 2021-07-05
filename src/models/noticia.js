@@ -14,8 +14,7 @@ const noticiaSchema = new Schema({
   autor: { type: String },
   fecha: { type: String },
   imagen: { type: String },
-  destacar: {type: Boolean},
-  publicar: {type: Boolean}
+  destacar: {type: Boolean}
 });
 
 const Noticia = mongoose.model("noticia", noticiaSchema);
