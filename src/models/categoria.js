@@ -5,7 +5,7 @@ const categoriaSchema = new Schema({
         type: String, 
         required: true,
         unique: true,
-        maxlength: 150
+        maxlength: 35
     }
 });
 
