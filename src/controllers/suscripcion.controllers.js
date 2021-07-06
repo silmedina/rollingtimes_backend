@@ -7,8 +7,6 @@ suscripcionCtrl.nuevaSuscripcion = async (req, res) => {
   console.log(req.body);
 
   try {
-    //validar por las dudas si alguna validacion del front paso por alto
-
     const suscripcionNueva = new Suscripcion({
       nombre: req.body.nombre,
       apellido: req.body.apellido,
@@ -38,23 +36,6 @@ suscripcionCtrl.nuevaSuscripcion = async (req, res) => {
 };
 
 suscripcionCtrl.listarSuscripcion = async (req, res) => {
-  // const token = req.headers['x-access-token'];
-
-  // if(!token){
-  //   return res.status(401).json({
-  //     auth:false,
-  //     message: 'No token provided'
-  //   });
-  // }
-
-
-  // const decoded = jwt.verify(token, CONFIG.SECRET_TOKEN);
-  
-  // const user = await Suscripcion.findById(decoded.id, {password: 0});
-  // if(!user){
-  //   return res.status(404).send('No user found');
-  // }
-  // res.json(user);
 
   try {
 

@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import CONFIG from './config';
 
 module.exports = function(req,res,next){
-    // CAMBIAR RUTAS UNA VEZ TERMINADA LA PAGINA
     if(req.path != '/api/login' && req.path != '/api/login/' && req.path != '/api/categoria' && req.path != '/api/noticia' && req.path != '/api/noticia/:id'){
         console.log(req.path);
         
