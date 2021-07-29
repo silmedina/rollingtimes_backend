@@ -39,9 +39,7 @@ noticiaCtrl.nuevaNoticia = async (req, res) => {
 noticiaCtrl.listarNoticias = async (req, res) => {
   try {
     const arregloNoticias = await Noticia.find();
-    setTimeout(() => {
-      res.status(200).json(arregloNoticias);
-    }, 2000);
+    res.status(200).json(arregloNoticias);
   } catch (error) {
     res.status(500).json({
       mensaje: "No se pudo obtener las noticias",
@@ -65,7 +63,6 @@ noticiaCtrl.eliminarNoticia = async (req, res) => {
 };
 
 noticiaCtrl.editarNoticia = async (req, res) => {
-  console.log(req.body);
   try {
     const noticiaExistente = await Noticia.find({
         $and: [
@@ -89,6 +86,7 @@ noticiaCtrl.editarNoticia = async (req, res) => {
     console.log(error);
   }
 };
+
 noticiaCtrl.destacarNoticia = async (req, res) => {
   try {
     await Noticia.findByIdAndUpdate(req.params.id, {destacar: req.body.destacar});
@@ -106,9 +104,7 @@ noticiaCtrl.destacarNoticia = async (req, res) => {
 noticiaCtrl.obtenerNoticia = async (req, res) => {
   try {
     const noticiaBuscada = await Noticia.findById(req.params.id);
-    setTimeout(() => {
-      res.status(200).json(noticiaBuscada);
-    }, 2000);
+    res.status(200).json(noticiaBuscada);
   } catch (error) {
     res.status(500).json({
       mensaje: "Error al obtener la noticia",
@@ -131,7 +127,6 @@ noticiaCtrl.obtenerNoticiasPorNombreCategoria = async (req, res) => {
 
 noticiaCtrl.buscarNoticiasPorTituloSubtitulo = async (req, res) => {
   try {
-    console.log(req.params.terminoBusqueda)
     const arregloNoticias = await Noticia.find({
       $or: [
         {'titulo': {'$regex': req.params.terminoBusqueda, '$options': 'i'}},
